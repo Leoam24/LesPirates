@@ -1,8 +1,17 @@
 package cartes;
 
-import journalDeBord.IJournalDeBord;
 
-public class CartePopularite extends GestionCarte implements IJournalDeBord {
+public class CartePopularite extends GestionCarte {
+    protected CartePopularite(String nomCarte, int pointPopularite, String descriptionCarte) {
+        super(nomCarte, pointPopularite, descriptionCarte);
+    }
+}
+	
+	
+	
+	
+	
+/*
 	private int pointPopularite;
 	private String descriptionCarte;
 	
@@ -18,5 +27,7 @@ public class CartePopularite extends GestionCarte implements IJournalDeBord {
 	public String getDescription() {
 		return this.descriptionCarte;
 	}
+
 	
 }
+*/

@@ -1,20 +1,23 @@
 package cartes;
 
-import journalDeBord.JournalDeBord;
 
-public abstract class GestionCarte extends JournalDeBord {
-    private String nomCarte;
+public abstract class GestionCarte{
+    private String typeCarte;
     private int pointCarte;
     private String descriptionCarte;
+    private String nomCarte;
 
-    protected GestionCarte(String nomCarte, int pointCarte, String descriptionCarte) {
-        this.nomCarte = nomCarte;
+    protected GestionCarte(String nomCarte, String typeCarte, int pointCarte, String descriptionCarte) {
+        this.typeCarte = nomCarte;
         this.pointCarte = pointCarte;
         this.descriptionCarte = descriptionCarte;
+        this.typeCarte = typeCarte;
     }
 
-    public String getNomCarte() {
-        return nomCarte;
+    
+    
+    public String getTypeCarte() {
+        return typeCarte;
     }
 
     public int getPointCarte() {
@@ -24,4 +27,9 @@ public abstract class GestionCarte extends JournalDeBord {
     public String getDescription() {
         return descriptionCarte;
     }
+
+	public String getNomCarte() {
+		return nomCarte;
+	}
+
 }

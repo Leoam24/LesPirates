@@ -2,8 +2,8 @@ package cartes;
 
 
 public class CartePopularite extends GestionCarte {
-    protected CartePopularite(String nomCarte, int pointPopularite, String descriptionCarte) {
-        super(nomCarte, pointPopularite, descriptionCarte);
+    public CartePopularite(String nomCarte, String typeCarte, int pointPopularite, String descriptionCarte) {
+        super(nomCarte, typeCarte, pointPopularite, descriptionCarte);
     }
 }
 	

@@ -1,7 +1,16 @@
 package journalDeBord;
 
-import cartes.GestionCarte;
 
 public interface IJournalDeBord {
-	void afficherDescriptionCarte(GestionCarte carte);
+	
+	void afficherDescriptionCarte(String description);
+	
+	void afficherNomCarte(String nomCarte);
+	
+	void afficherCaracteristiqueCarte(int point, String typeCarte);
+	
+	void afficherCarte(String description, String nom, int pointCarte); 
+		
+	
+	
 }

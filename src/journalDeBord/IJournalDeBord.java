@@ -11,6 +11,14 @@ public interface IJournalDeBord {
 	
 	void afficherCarte(String description, String nom, int pointCarte); 
 		
-	
+	void afficherMessage(String message);
+
+	void afficherCartePiochee(String nomCarte);
+
+	void afficherMain(String[] nomsCartes, int nbCarte);
+
+	void afficherJouerCarte(String nomCarte, int pointsPopularite);
+
+	void afficherVictoire();
 	
 }

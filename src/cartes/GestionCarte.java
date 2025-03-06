@@ -8,7 +8,7 @@ public abstract class GestionCarte{
     private String nomCarte;
 
     protected GestionCarte(String nomCarte, String typeCarte, int pointCarte, String descriptionCarte) {
-        this.typeCarte = nomCarte;
+        this.nomCarte = nomCarte;
         this.pointCarte = pointCarte;
         this.descriptionCarte = descriptionCarte;
         this.typeCarte = typeCarte;

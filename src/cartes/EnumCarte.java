@@ -17,7 +17,7 @@ public enum EnumCarte {
 			"Vous dirigez votre équipage sans trembler, imposant respect et discipline. Ceux qui osent défier votre autorité apprennent vite à ne plus recommencer."));
 	//Main de fer a modifier --> ajouter le fait de perdre 1 point de vie !
 	
-	private GestionCarte carte;
+	private final GestionCarte carte;
 	
 	EnumCarte(GestionCarte carte) {
 		this.carte = carte;
@@ -26,6 +26,8 @@ public enum EnumCarte {
     public GestionCarte getCarte() {
         return carte;
     }
-	
+    public String getNom() {
+        return carte.getNomCarte();  
+    }
 
 }

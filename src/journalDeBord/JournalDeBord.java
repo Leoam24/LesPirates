@@ -1,9 +1,35 @@
 package journalDeBord;
-
+import java.util.Scanner;
 
 
 public class JournalDeBord implements IJournalDeBord{
+	private String nomPirate1;
+	private String nomPirate2;
 	
+	public void commencerJeu() {
+		Scanner scanner = new Scanner(System.in);
+	    
+		this.afficherMessage("🏴‍☠️ Bienvenue dans le jeu *Les Pirates* !");
+		    
+		this.afficherMessage("👤 Joueur 1, quel est votre prénom ?");
+		nomPirate1 = scanner.next();
+		this.afficherMessage("☠ C'est noté, " + nomPirate1 + " !");
+		    
+		this.afficherMessage("👤 Joueur 2, quel est votre prénom ?");
+		nomPirate2 = scanner.next();
+		this.afficherMessage("☠ C'est noté, " + nomPirate2 + " !");
+		    
+		// Fermeture du scanner si plus utilisé
+		scanner.close();
+	}
+	@Override
+	public String getNomPirate1() {
+		return nomPirate1;
+	}
+	@Override
+	public String getNomPirate2() {
+		return nomPirate2;
+	}
 	@Override
 	public void afficherDescriptionCarte(String description) {
 		System.out.println(description);
@@ -45,7 +71,7 @@ public class JournalDeBord implements IJournalDeBord{
 
 	@Override
 	public void afficherCartePiochee(String nomCarte) {
-		System.out.println("\n Vous avez pioché : " + nomCarte);
+		System.out.println("\nVous avez pioché : " + nomCarte);
 	}
 
 	@Override

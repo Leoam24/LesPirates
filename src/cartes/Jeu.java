@@ -19,7 +19,8 @@ public class Jeu {
 
     public void deroulementJeu(Pirate joueurCourant, Pirate joueurAttendant) {
         MainJoueur mainJoueurCourant = (joueurCourant == pirate1) ? mainPirate1 : mainPirate2;
-
+        MainJoueur mainJoueurAttendant = (joueurCourant == pirate2) ? mainPirate2 : mainPirate1;
+        		
         journal.afficherMessage("\nVoici les cartes de " + joueurCourant.getNomJoueur() + " : ");
         mainJoueurCourant.afficherMain();
 
@@ -41,9 +42,10 @@ public class Jeu {
                 scanner.next(); 
             }
         }
-
+      
         mainJoueurCourant.jouerCarteMain(choix, joueurCourant, joueurAttendant);
-        //mainJoueurCourant.piocher(joueurCourant.getNomJoueur());
+        mainJoueurCourant.piocher();
+        mainJoueurAttendant.piocher();
     }
 
 
@@ -68,13 +70,19 @@ public class Jeu {
         while (!partieFinie) {
             // Exécuter le tour de jeu
             deroulementJeu(joueurCourant, joueurAttendant);
-
+            
             // Vérifier si un pirate a gagné
             Pirate gagnant = quiAGagne(joueurCourant, joueurAttendant);
             if (gagnant != null) {
                 partieFinie = true;
-                journal.afficherMessage("Le pirate " + gagnant.getNomJoueur() + " a gagné !");
+                journal.afficherMessage("\n=====================================");
+                journal.afficherMessage("      🎉 FIN DE LA PARTIE 🎉");
+                journal.afficherMessage("=====================================");
+                journal.afficherMessage("🏆 VICTOIRE ! 🏆");
+                journal.afficherMessage("Le pirate " + gagnant.getNomJoueur() + " a remporté la partie ! 🎊");
+                journal.afficherMessage("=====================================\n");
             } else {
+            	journal.afficherMessages("\n####### Au tour de " + joueurAttendant.getNomJoueur() + " #######");
                 // Alternance des joueurs
                 Pirate temp = joueurCourant;
                 joueurCourant = joueurAttendant;

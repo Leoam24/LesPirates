@@ -37,21 +37,24 @@ public class MainJoueur {
 	    }  
 
 	    // Affichage final de la main
+	    journal.afficherMessages("=====================================\n");
+	    journal.afficherMessages("         MAIN DU JOUEUR\n");
+	    journal.afficherMessages("=====================================\n");
+	    journal.afficherMessages("Joueur : " + joueur + "\n");
+	    journal.afficherMessages("-------------------------------------\n");
 	    String[] nomsCartes = new String[nbCarte];
 	    for (int i = 0; i < nbCarte; i++) {
 	        nomsCartes[i] = main[i].getNom();
 	    }
-	    System.out.print("\n" + joueur + " ");
 	    journal.afficherMain(nomsCartes, nbCarte);
+	    journal.afficherMessages("-------------------------------------");
 	}
 	
-	public void piocher(String joueur) {
+	public void piocher() {
 		if (nbCarte >= nbMaxCarte) {
-        journal.afficherMessage(nomJoueur + ", votre main est déjà pleine !");
+        //journal.afficherMessage(nomJoueur + ", votre main est déjà pleine !");
         return;
 		}
-
-    journal.afficherMessage(joueur + " pioche une nouvelle carte...");
 
     int choixCarte = random.nextInt(4);
     EnumCarte carteTiree = EnumCarte.values()[choixCarte];
@@ -67,7 +70,6 @@ public class MainJoueur {
 
     // Affichage de la carte piochée
     journal.afficherCartePiochee(carteTiree.getNom());
-    System.out.print("\n" + joueur + " ");
     afficherMain();
 }
 	
@@ -98,8 +100,8 @@ public class MainJoueur {
 	                          carte.getTypeCarte(),
 	                          carte.getPointCarte());
 		
-	    journal.afficherJouerCarte(nomCarte, pointCarte, carte.getTypeCarte());
-		afficherMain();
+	    //journal.afficherJouerCarte(nomCarte, pointCarte, carte.getTypeCarte());
+		//afficherMain();
 	}
 	
 	public EnumCarte getCarte(int indexCarte) { // pour afficher la main

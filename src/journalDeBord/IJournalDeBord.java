@@ -16,6 +16,8 @@ public interface IJournalDeBord {
 	void afficherCarte(String description, String nom, int pointCarte); 
 		
 	void afficherMessage(String message);
+	
+	void afficherMessages(String message);
 
 	void afficherCartePiochee(String nomCarte);
 

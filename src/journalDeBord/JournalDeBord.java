@@ -12,7 +12,7 @@ public class JournalDeBord implements IJournalDeBord{
     	System.out.println("🏴‍☠️ Bienvenue dans le jeu *Les Pirates* !");
     	System.out.print("Joueur 1, quel est votre prénom : ");
         this.nomPirate1 = scanner.nextLine();
-        System.out.print("Joueur 1, quel est votre prénom : ");
+        System.out.print("Joueur 2, quel est votre prénom : ");
         this.nomPirate2 = scanner.nextLine();
     }
 
@@ -89,7 +89,10 @@ public class JournalDeBord implements IJournalDeBord{
 	public void afficherMessage(String message) {
 		System.out.println(message);
 	}
-
+	public void afficherMessages(String message) {
+		System.out.print(message);
+	}
+	
 	@Override
 	public void afficherCartePiochee(String nomCarte) {
 		System.out.println("\nVous avez pioché : " + nomCarte);
@@ -97,25 +100,24 @@ public class JournalDeBord implements IJournalDeBord{
 
 	@Override
 	public void afficherMain(String[] nomsCartes, int nbCarte) {
-		System.out.println("votre main :");
 		for (int i = 0; i < nbCarte; i++) {
-			System.out.println((i + 1) + ". " + nomsCartes[i]);
+			System.out.println((i + 1) + ". " + nomsCartes[i] );
 		}
 	}
 
 	@Override
 	public void afficherJouerCarte(String nomCarte, int pointsCarte, String typeCarte) {
-		System.out.println("\n Vous avez joué : " + nomCarte);
+		System.out.println("\nVous avez joué : " + nomCarte);
 		if(typeCarte.equals("CartePopularite")) {
-			System.out.println(" Vous avez maintenant " + pointsCarte + " points de popularité.");
+			System.out.println("Vous avez maintenant " + pointsCarte + " points de popularité.");
 		}
 		else if (typeCarte.equals("CarteAttaque") )
-			System.out.println(" Vous avez infligé " + pointsCarte + " à votre adversaire !");
+			System.out.println("Vous avez infligé " + pointsCarte + " à votre adversaire !");
 	}
 
 	@Override
 	public void afficherVictoire() {
-		System.out.println("\n Bravo ! Vous avez gagné en atteignant 5 points de popularité ! ");
+		System.out.println("\nBravo ! Vous avez gagné en atteignant 5 points de popularité ! ");
 	}
 	
 	public static void afficherDegat(String message) {
@@ -125,24 +127,3 @@ public class JournalDeBord implements IJournalDeBord{
 		System.out.println(message);
 	}
 }
-	
-/*	
-	public void utiliserCarte(GestionCarte carte) {
-		if(carte instanceof CartePopularite){
-			carte.afficherDescriptionCarte(carte);
-			System.out.println("Vous gagnez " + carte.getPointCarte() + " points de popularités.");
-			}
-		
-		else if (carte instanceof CarteAttaque) {
-			carte.afficherDescriptionCarte(carte);
-			System.out.println("Votre attaque fait " + carte.getPointCarte() + " de dégats.");
-			
-		}
-	}
-	// ici ca serait plutot une carte venant de la classe main d'un joueur pour differencier qui attaque de qui prend les degats
-	public void prendreDegats(GestionCarte carte, Pirate joueur) {
-		if(carte.getPointCarte() >= joueur.getNbPointDeVie()) {
-			System.out.println();
-			}
-	}*/
-

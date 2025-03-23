@@ -1,8 +1,8 @@
 package cartes;
-
+import personnage.Pirate;
 
 public abstract class GestionCarte{
-    private String typeCarte;
+	private String typeCarte;
     private int pointCarte;
     private String descriptionCarte;
     private String nomCarte;
@@ -32,4 +32,13 @@ public abstract class GestionCarte{
 		return nomCarte;
 	}
 
+
+
+	public abstract void appliquerEffet(Pirate joueur);
+	
+
 }
+
+
+
+

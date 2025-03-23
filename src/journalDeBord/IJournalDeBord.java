@@ -23,8 +23,13 @@ public interface IJournalDeBord {
 
 	void afficherMain(String[] nomsCartes, int nbCarte);
 
-	void afficherJouerCarte(String nomCarte, int pointsPopularite);
+	void afficherJouerCarte(String nomCarte, int pointsPopularite, String typeCarte);
 
 	void afficherVictoire();
+	
+	static void afficherDegat(String message) {
+	}
+	static void afficherPopularite(String message) {
+	}
 	
 }

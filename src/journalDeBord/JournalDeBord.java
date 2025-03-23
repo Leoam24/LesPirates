@@ -5,21 +5,37 @@ import java.util.Scanner;
 public class JournalDeBord implements IJournalDeBord{
 	private String nomPirate1;
 	private String nomPirate2;
-	
+	private static final Scanner scanner = new Scanner(System.in);
+    private static JournalDeBord instance = null;
+
+    public JournalDeBord() { 
+    	System.out.print("Entrez le nom du premier pirate : ");
+        nomPirate1 = scanner.nextLine();
+        System.out.print("Entrez le nom du deuxième pirate : ");
+        nomPirate2 = scanner.nextLine();
+    }
+
+    public static JournalDeBord getInstance() {
+        if (instance == null) {
+            instance = new JournalDeBord();
+        }
+        return instance;
+    }
+    
+	@Override
 	public void commencerJeu() {
 		Scanner scanner = new Scanner(System.in);
 	    
 		this.afficherMessage("🏴‍☠️ Bienvenue dans le jeu *Les Pirates* !");
 		    
-		this.afficherMessage("👤 Joueur 1, quel est votre prénom ?");
+		this.afficherMessage("Joueur 1, quel est votre prénom ?");
 		nomPirate1 = scanner.next();
 		this.afficherMessage("☠ C'est noté, " + nomPirate1 + " !");
 		    
-		this.afficherMessage("👤 Joueur 2, quel est votre prénom ?");
+		this.afficherMessage("Joueur 2, quel est votre prénom ?");
 		nomPirate2 = scanner.next();
 		this.afficherMessage("☠ C'est noté, " + nomPirate2 + " !");
 		    
-		// Fermeture du scanner si plus utilisé
 		scanner.close();
 	}
 	@Override
@@ -76,24 +92,33 @@ public class JournalDeBord implements IJournalDeBord{
 
 	@Override
 	public void afficherMain(String[] nomsCartes, int nbCarte) {
-		System.out.println("\n Votre main :");
+		System.out.println("votre main :");
 		for (int i = 0; i < nbCarte; i++) {
 			System.out.println((i + 1) + ". " + nomsCartes[i]);
 		}
 	}
 
 	@Override
-	public void afficherJouerCarte(String nomCarte, int pointsPopularite) {
+	public void afficherJouerCarte(String nomCarte, int pointsCarte, String typeCarte) {
 		System.out.println("\n Vous avez joué : " + nomCarte);
-		System.out.println(" Vous avez maintenant " + pointsPopularite + " points de popularité.");
+		if(typeCarte.equals("CartePopularite")) {
+			System.out.println(" Vous avez maintenant " + pointsCarte + " points de popularité.");
+		}
+		else if (typeCarte.equals("CarteAttaque") )
+			System.out.println(" Vous avez infligé " + pointsCarte + " à votre adversaire !");
 	}
 
 	@Override
 	public void afficherVictoire() {
 		System.out.println("\n Bravo ! Vous avez gagné en atteignant 5 points de popularité ! ");
 	}
-
-		
+	
+	public static void afficherDegat(String message) {
+		System.out.println(message);
+	}
+	public static void afficherPopularite(String message) {
+		System.out.println(message);
+	}
 }
 	
 /*	

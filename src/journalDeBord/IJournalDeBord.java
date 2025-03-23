@@ -3,8 +3,6 @@ package journalDeBord;
 
 public interface IJournalDeBord {
 	
-	void commencerJeu();
-	
 	String getNomPirate1();
 	
 	String getNomPirate2();

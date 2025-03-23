@@ -9,10 +9,11 @@ public class JournalDeBord implements IJournalDeBord{
     private static JournalDeBord instance = null;
 
     public JournalDeBord() { 
-    	System.out.print("Entrez le nom du premier pirate : ");
-        nomPirate1 = scanner.nextLine();
-        System.out.print("Entrez le nom du deuxième pirate : ");
-        nomPirate2 = scanner.nextLine();
+    	System.out.println("🏴‍☠️ Bienvenue dans le jeu *Les Pirates* !");
+    	System.out.print("Joueur 1, quel est votre prénom : ");
+        this.nomPirate1 = scanner.nextLine();
+        System.out.print("Joueur 1, quel est votre prénom : ");
+        this.nomPirate2 = scanner.nextLine();
     }
 
     public static JournalDeBord getInstance() {
@@ -22,22 +23,6 @@ public class JournalDeBord implements IJournalDeBord{
         return instance;
     }
     
-	@Override
-	public void commencerJeu() {
-		Scanner scanner = new Scanner(System.in);
-	    
-		this.afficherMessage("🏴‍☠️ Bienvenue dans le jeu *Les Pirates* !");
-		    
-		this.afficherMessage("Joueur 1, quel est votre prénom ?");
-		nomPirate1 = scanner.next();
-		this.afficherMessage("☠ C'est noté, " + nomPirate1 + " !");
-		    
-		this.afficherMessage("Joueur 2, quel est votre prénom ?");
-		nomPirate2 = scanner.next();
-		this.afficherMessage("☠ C'est noté, " + nomPirate2 + " !");
-		    
-		scanner.close();
-	}
 	@Override
 	public String getNomPirate1() {
 		return nomPirate1;
@@ -69,14 +54,34 @@ public class JournalDeBord implements IJournalDeBord{
 	@Override
 	public void afficherCarte(String description, String typeCarte, int pointCarte) {
 		if(typeCarte.equals("CarteAttaque")) {
-			System.out.println("Détails sur la carte Attaque : ");
-			afficherDescriptionCarte(description);
+			System.out.println("\n=====================================");
+			System.out.println("      DÉTAILS SUR LA CARTE");
+			System.out.println("=====================================");
+			System.out.println("Type : Attaque");
+			System.out.println("-------------------------------------");
+
+			afficherDescriptionCarte("Description : " + description);
+			System.out.println("-------------------------------------");
+
+			System.out.println("Caractéristiques de la carte :");
 			afficherCaracteristiqueCarte(pointCarte, typeCarte);
+
+			System.out.println("=====================================");
 		}
 		else if (typeCarte.equals("CartePopularite")) {
-			System.out.println("Détails sur la carte Popularité : ");
-			afficherDescriptionCarte(description);
+			System.out.println("\n=====================================");
+			System.out.println("      DÉTAILS SUR LA CARTE");
+			System.out.println("=====================================");
+			System.out.println("Type : Popularité : ");
+			System.out.println("-------------------------------------");
+
+			afficherDescriptionCarte("Description : " + description);
+			System.out.println("-------------------------------------");
+
+			System.out.println("Caractéristiques de la carte :");
 			afficherCaracteristiqueCarte(pointCarte, typeCarte);
+
+			System.out.println("=====================================");
 			
 		}
 	}

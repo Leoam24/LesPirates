@@ -8,7 +8,6 @@ import cartes.GestionCarte;
 import journalDeBord.JournalDeBord;
 
 public class MainJoueur {
-	private Pirate joueur;
 	
 	private String nomJoueur;
 	private int nbMaxCarte = 4;
@@ -24,10 +23,10 @@ public class MainJoueur {
 	
 	public void initialiserPioche(String joueur) {
 		if (nbCarte >= nbMaxCarte) {
-            journal.afficherMessage(nomJoueur + ", votre main est pleine !");
+            journal.afficherMessage(joueur + ", votre main est pleine !");
             return;
         }
-		journal.afficherMessage(joueur +"  pioche sa main");
+		journal.afficherMessage("\n" + joueur +"  pioche sa main");
 
 	    for (int i = nbCarte; i < nbMaxCarte; i++) {  
 	        int choixCarte = random.nextInt(4);  // Limité aux 4 premières cartes  
@@ -35,15 +34,6 @@ public class MainJoueur {
 
 	        main[i] = carteTiree;  // Ajout dans la main  
 	        nbCarte++;  // Augmente le nombre de cartes  
-/*
-	        // Affichage via JournalDeBord  
-	        journal.afficherCartePiochee(carteTiree.getNom());  
-	        journal.afficherCarte(carteTiree.getCarte().getDescription(),
-	                              carteTiree.getCarte().getTypeCarte(),
-	                              carteTiree.getCarte().getPointCarte());
-
-	        journal.afficherMessage(joueur + " votre main contient maintenant " + nbCarte + " cartes.");
-	    */
 	    }  
 
 	    // Affichage final de la main
@@ -77,42 +67,36 @@ public class MainJoueur {
 
     // Affichage de la carte piochée
     journal.afficherCartePiochee(carteTiree.getNom());
-    /*
-    journal.afficherCarte(carteTiree.getCarte().getDescription(),
-                          carteTiree.getCarte().getTypeCarte(),
-                          carteTiree.getCarte().getPointCarte());
-
-    journal.afficherMessage(joueur + ", votre main contient maintenant " + nbCarte + " cartes.");
-    */
     System.out.print("\n" + joueur + " ");
     afficherMain();
 }
 	
-	public void jouerCarteMain(int indexCarte) {
+	public void jouerCarteMain(int indexCarte, Pirate joueurCourant, Pirate adversaire) {
 	    if (indexCarte < 0 || indexCarte >= nbMaxCarte || main[indexCarte] == null) {
 	        journal.afficherMessage("Carte invalide. Choisissez une carte existante !");
 	        return;
 	    }
 		int pointCarte = -1;
-		EnumCarte enumCarte = main[indexCarte];
-		GestionCarte carte = enumCarte.getCarte();
+		GestionCarte carte = main[indexCarte-1].getCarte();
+		//EnumCarte enumCarte = main[indexCarte];
+		//GestionCarte carte = enumCarte.getCarte();
 		String nomCarte = carte.getNomCarte();
-		main[indexCarte] = null;
+		main[indexCarte-1] = null;
 		this.nbCarte--;
 
 		if( carte instanceof CartePopularite) {
 			pointCarte = carte.getPointCarte();
-			carte.appliquerEffet(joueur);
+			carte.appliquerEffet(joueurCourant);
 		}
 		else if (carte instanceof CarteAttaque){
 			pointCarte = carte.getPointCarte();
-			carte.appliquerEffet(joueur);
+			carte.appliquerEffet(adversaire);
 		}
 		   // Affichage de la carte joué
-	    journal.afficherCartePiochee(enumCarte.getNom());
-	    journal.afficherCarte(enumCarte.getCarte().getDescription(),
-	                          enumCarte.getCarte().getTypeCarte(),
-	                          enumCarte.getCarte().getPointCarte());
+	    //journal.afficherCartePiochee(carte.getNomCarte());
+	    journal.afficherCarte(carte.getDescription(),
+	                          carte.getTypeCarte(),
+	                          carte.getPointCarte());
 		
 	    journal.afficherJouerCarte(nomCarte, pointCarte, carte.getTypeCarte());
 		afficherMain();

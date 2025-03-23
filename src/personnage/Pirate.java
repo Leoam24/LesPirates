@@ -6,7 +6,6 @@ public class Pirate {
     private String nom;
     private int pointsDeVie = 5;
     private int pointsDePop = 0;
-    private MainJoueur main = new MainJoueur(nom);
     
     public Pirate(String nom) {
         this.nom = nom;

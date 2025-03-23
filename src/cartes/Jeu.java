@@ -15,16 +15,12 @@ public class Jeu {
 
     private Scanner scanner = new Scanner(System.in);
 
-    public Jeu() {
-    }
+
 
     public void deroulementJeu(Pirate joueurCourant, Pirate joueurAttendant) {
         MainJoueur mainJoueurCourant = (joueurCourant == pirate1) ? mainPirate1 : mainPirate2;
 
-        journal.afficherMessage(joueurCourant.getNomJoueur() + " pioche une carte...");
-        mainJoueurCourant.piocher(joueurCourant.getNomJoueur());
-
-        journal.afficherMessage("Voici les cartes de " + joueurCourant.getNomJoueur() + " : ");
+        journal.afficherMessage("\nVoici les cartes de " + joueurCourant.getNomJoueur() + " : ");
         mainJoueurCourant.afficherMain();
 
         int choix = -1;
@@ -46,7 +42,8 @@ public class Jeu {
             }
         }
 
-        mainJoueurCourant.jouerCarteMain(choix);
+        mainJoueurCourant.jouerCarteMain(choix, joueurCourant, joueurAttendant);
+        //mainJoueurCourant.piocher(joueurCourant.getNomJoueur());
     }
 
 
@@ -61,7 +58,6 @@ public class Jeu {
 
     public void lancerJeu() {
         // Initialisation des mains des joueurs
-        //journal.commencerJeu();
     	mainPirate1.initialiserPioche(pirate1.getNomJoueur());
         mainPirate2.initialiserPioche(pirate2.getNomJoueur());
 
